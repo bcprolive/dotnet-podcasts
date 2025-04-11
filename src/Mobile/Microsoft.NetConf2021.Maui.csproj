@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <!-- iOS, Android, MacCatalyst -->
-    <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net9.0-windows10.0.19041.0</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <RootNamespace>Microsoft.NetConf2021.Maui</RootNamespace>
     <UseMaui>true</UseMaui>
@@ -62,11 +62,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-    <PackageReference Include="MonkeyCache.FileStore" Version="2.0.0-beta" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="MonkeyCache.FileStore" Version="2.1.1" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
-    <PackageReference Include="SkiaSharp" Version="2.88.6" />
-    <PackageReference Include="System.Threading.RateLimiting" Version="7.0.0" />
+    <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="System.Threading.RateLimiting" Version="9.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -87,5 +87,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.60" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Maui.Controls" Version="9.0.60" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="9.0.60" />
   </ItemGroup>
 </Project>

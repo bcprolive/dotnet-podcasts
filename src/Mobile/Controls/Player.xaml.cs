@@ -51,15 +51,32 @@ public partial class Player : ContentView
 
     private void UpdatePlayPause()
     {
+        //this.IsVisible = true;
+
+        //this.playButton.Source = this.playerService.IsPlaying ? "player_pause.png" : "player_play.png";
+
+        //epiosdeTitle.Text = this.playerService.CurrentEpisode.Title;
+        //authorText.Text = $"{this.playerService.CurrentShow?.Author} - {this.playerService.CurrentEpisode?.Published.ToString("MMM, d yyy")}";
+
+        //podcastImage.Source = this.playerService.CurrentShow?.Image;
+        //duration.Text = this.playerService.CurrentEpisode?.Duration.ToString();
+
+
         this.IsVisible = true;
 
+#if ANDROID || IOS
+        // Update UI for Android/iOS branch
         this.playButton.Source = this.playerService.IsPlaying ? "player_pause.png" : "player_play.png";
-
         epiosdeTitle.Text = this.playerService.CurrentEpisode.Title;
         authorText.Text = $"{this.playerService.CurrentShow?.Author} - {this.playerService.CurrentEpisode?.Published.ToString("MMM, d yyy")}";
 
-        podcastImage.Source = this.playerService.CurrentShow?.Image;
-        duration.Text = this.playerService.CurrentEpisode?.Duration.ToString();
+
+#elif WINDOWS || MACCATALYST
+    // Update UI for UWP/MacCatalyst branch
+    podcastImage.Source = this.playerService.CurrentShow?.Image;
+    duration.Text = this.playerService.CurrentEpisode?.Duration.ToString();
+#endif
+
     }
 
     private void PlayerService_IsPlayingChanged(object sender, EventArgs e)
